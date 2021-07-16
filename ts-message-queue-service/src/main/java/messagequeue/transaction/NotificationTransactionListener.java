@@ -12,7 +12,8 @@ import org.apache.rocketmq.common.message.MessageExt;
 public class NotificationTransactionListener implements TransactionListener {
     @Override
     public LocalTransactionState executeLocalTransaction(Message msg, Object arg) {
-        // TODO: condition for commit
+        // TODO: what to return / when to commit
+        // local transaction process
         if (true) {
             return LocalTransactionState.COMMIT_MESSAGE;
         }
@@ -21,6 +22,8 @@ public class NotificationTransactionListener implements TransactionListener {
 
     @Override
     public LocalTransactionState checkLocalTransaction(MessageExt msg) {
+        // TODO: what to return / when to commit
+        // check transaction status
         return LocalTransactionState.COMMIT_MESSAGE;
     }
 }
