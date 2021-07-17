@@ -25,17 +25,17 @@ public class MessageQueueController {
         return "Welcome to [ Message Queue Service ] !";
     }
 
-    @PostMapping(value = "/mq/send_cancel_message")
+    @PostMapping(value = "/notify/send_cancel_message")
     public boolean send_cancel_message(@RequestBody NotifyInfo info, @RequestHeader HttpHeaders headers) {
         return service.sendNotification(info, headers, "cancel");
     }
 
-    @PostMapping(value = "/mq/send_preserve_message")
+    @PostMapping(value = "/notify/send_preserve_message")
     public boolean send_preserve_message(@RequestBody NotifyInfo info, @RequestHeader HttpHeaders headers) {
         return service.sendNotification(info, headers, "preserve");
     }
 
-    @PostMapping(value = "/mq/send_preserve_other_message")
+    @PostMapping(value = "/notify/send_preserve_other_message")
     public boolean send_preserve_other_message(@RequestBody NotifyInfo info, @RequestHeader HttpHeaders headers) {
         return service.sendNotification(info, headers, "preserve_other");
     }
