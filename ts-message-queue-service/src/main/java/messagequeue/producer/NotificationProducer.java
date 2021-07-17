@@ -10,9 +10,6 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.messaging.Message;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @Service
 public class NotificationProducer extends AbstractProducer<Notification>{
 
@@ -28,6 +25,7 @@ public class NotificationProducer extends AbstractProducer<Notification>{
         Notification notification = new Notification(notifyInfo, httpHeaders);
         Message<Notification> message = newMessage(notification, null);
         // TODO: possibly another delayLevel? 1 indicates level 1 delay
+        // TODO: unhandled send callback
         rocketMQTemplate.asyncSend(destination, message, new SendCallback() {
             @Override
             public void onSuccess(SendResult sendResult) {
