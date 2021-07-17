@@ -14,10 +14,10 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
  * @author fdse
  */
 @SpringBootApplication
-@EnableAspectJAutoProxy(proxyTargetClass = true)
-@EnableAsync
-@IntegrationComponentScan
-@EnableSwagger2
+//@EnableAspectJAutoProxy(proxyTargetClass = true)
+//@EnableAsync
+//@IntegrationComponentScan
+//@EnableSwagger2
 public class MessageQueueApplication {
 
     public static void main(String[] args) {

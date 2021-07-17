@@ -8,9 +8,10 @@ import org.apache.rocketmq.spring.core.RocketMQTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.messaging.Message;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
-@Service
+@Component
 public class NotificationProducer extends AbstractProducer<Notification>{
 
     private final RocketMQTemplate rocketMQTemplate;

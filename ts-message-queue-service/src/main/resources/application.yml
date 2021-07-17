@@ -1,0 +1,13 @@
+server:
+  port: 11111
+
+rocketmq:
+  name-server: 127.0.0.1:9876
+  producer:
+    group: notification
+  consumer:
+    group: notification
+
+spring:
+  application:
+    name: ts-notification-service
