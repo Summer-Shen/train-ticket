@@ -1,5 +1,6 @@
 package messagequeue.producer;
 
+import messagequeue.entity.Notification;
 import messagequeue.entity.NotifyInfo;
 import org.apache.rocketmq.client.producer.SendCallback;
 import org.apache.rocketmq.client.producer.SendResult;
@@ -13,7 +14,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @Service
-public class NotificationProducer extends AbstractProducer<NotifyInfo>{
+public class NotificationProducer extends AbstractProducer<Notification>{
 
     private final RocketMQTemplate rocketMQTemplate;
 
@@ -24,10 +25,9 @@ public class NotificationProducer extends AbstractProducer<NotifyInfo>{
 
     public void produceMessage(NotifyInfo notifyInfo, HttpHeaders httpHeaders, String tag) {
         String destination = newDestination("notification", tag);
-        Map<String, Object> headersMap = new HashMap<>();
-        headersMap.put("httpHeaders", httpHeaders);
-        Message<NotifyInfo> message = newMessage(notifyInfo, headersMap);
-        // TODO: possibly another delayLevel?
+        Notification notification = new Notification(notifyInfo, httpHeaders);
+        Message<Notification> message = newMessage(notification, null);
+        // TODO: possibly another delayLevel? 1 indicates level 1 delay
         rocketMQTemplate.asyncSend(destination, message, new SendCallback() {
             @Override
             public void onSuccess(SendResult sendResult) {
